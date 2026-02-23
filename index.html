@@ -64,12 +64,28 @@
       }
 
       .headline {
-        font-size: clamp(84px, 11.2vw, 214px);
-        line-height: 0.85;
         margin: 0;
-        font-weight: 500;
-        letter-spacing: -0.04em;
+      }
+
+      .desol-title {
+        font-size: clamp(120px, 16vw, 280px);
+        line-height: 0.78;
+        margin: 0 0 18px;
+        font-weight: 600;
+        letter-spacing: -0.06em;
         text-transform: uppercase;
+      }
+
+      .desol-body {
+        margin: 0;
+        max-width: 960px;
+        font-size: 44px;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+      }
+
+      .desol-body span {
+        display: block;
       }
 
       .hero-right {
@@ -268,7 +284,14 @@
       <div class="floating right">Latest Radio #134 深掘り特集</div>
 
       <section class="hero">
-        <h1 class="headline">OFF TRACK, ON PURPOSE, IN LIFE</h1>
+        <h1 class="headline">
+          <span class="desol-title">DESOL</span>
+          <span class="desol-body">
+            <span>This project starts from a question, not a map.</span>
+            <span>Every detour is a clue, every pause is part of the story.</span>
+            <span>Follow instinct, rewrite direction, and make your own route.</span>
+          </span>
+        </h1>
         <div class="hero-right">
           <p class="subcopy">Follow Curiosity,<br />Redefine your Road</p>
           <div class="placeholder hero-media">
