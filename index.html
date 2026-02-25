@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESOL - ゲームアートプロデューサー ポートフォリオ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Libre+Franklin:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Franklin', 'Noto Sans JP', sans-serif;
+            background: white;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background: white;
+            border-bottom: 2px solid black;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            font-size: 12px;
+        }
+
+        .top-nav-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        
+
+        .top-nav button {
+            background: none;
+            border: 1px solid black;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .top-nav button:hover {
+            background: black;
+            color: white;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: black;
+            color: white;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .bottom-nav button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .bottom-nav button:hover {
+            opacity: 0.7;
+        }
+
+        /* Main Container */
+        .main-container {
+            padding-top: 48px;
+            padding-bottom: 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            padding: 32px;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            width: 30%;
+            border-right: 2px solid black;
+            padding-right: 32px;
+            padding-top: 64px;
+        }
+
+        .hero-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 96px 64px 0;
+        }
+
+        .hero-right {
+            width: 25%;
+            border-left: 2px solid black;
+            padding-left: 32px;
+            padding-top: 64px;
+        }
+
+        .hero-title {
+            font-size: 11rem;
+            line-height: 0.85;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 32px;
+            font-weight: 900;
+            text-align: center;
+            margin-top: 48px;
+            letter-spacing: 0.05em;
+        }
+
+        .text-box {
+            border: 1px solid black;
+            padding: 16px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .stamp {
+            position: absolute;
+            right: 96px;
+            top: 128px;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(12deg);
+            background: white;
+            z-index: 10;
+        }
+
+        .stamp-inner {
+            text-align: center;
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+        .image-placeholder {
+            aspect-ratio: 3/4;
+            border: 2px solid black;
+            position: relative;
+            background: white;
+        }
+
+        .image-placeholder::before,
+        .image-placeholder::after {
+            content: '';
+            position: absolute;
+            background: black;
+        }
+
+        .image-placeholder::before {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 50%;
+            border-bottom: 2px solid black;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+        }
+
+        .image-placeholder::after {
+            top: 50%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-right: 2px solid black;
+            clip-path: polygon(0 0, 100% 100%, 100% 0);
+        }
+
+        .circle-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid black;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            text-align: center;
+            line-height: 1.2;
+            font-weight: 900;
+        }
+
+        /* Section Styles */
+        .section {
+            border-top: 4px solid black;
+            padding: 64px 32px;
+        }
+
+        .section-bg {
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .grid-12 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 32px;
+        }
+
+        .col-4 {
+            grid-column: span 4;
+        }
+
+        .col-5 {
+            grid-column: span 5;
+        }
+
+        .col-7 {
+            grid-column: span 7;
+        }
+
+        .col-8 {
+            grid-column: span 8;
+        }
+
+        /* Titles */
+        .big-title {
+            font-size: 7rem;
+            line-height: 0.9;
+            font-weight: 900;
+            margin-bottom: 32px;
+        }
+
+        .huge-title {
+            font-size: 9rem;
+            line-height: 0.85;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        /* Before/After Comparison */
+        .comparison-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            border: 4px solid black;
+            overflow: hidden;
+            cursor: col-resize;
+            user-select: none;
+            background: #f0f0f0;
+        }
+
+        .comparison-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .comparison-before {
+            clip-path: inset(0 50% 0 0);
+        }
+
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: black;
+            z-index: 10;
+        }
+
+        .comparison-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: black;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comparison-handle::before,
+        .comparison-handle::after {
+            content: '';
+            width: 2px;
+            height: 16px;
+            background: white;
+            position: absolute;
+        }
+
+        .comparison-handle::before {
+            left: 12px;
+        }
+
+        .comparison-handle::after {
+            right: 12px;
+        }
+
+        .comparison-label {
+            position: absolute;
+            top: 16px;
+            background: white;
+            border: 2px solid black;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .comparison-label.left {
+            left: 16px;
+        }
+
+        .comparison-label.right {
+            right: 16px;
+            background: black;
+            color: white;
+        }
+
+        /* Now Images Grid */
+        .now-images-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .now-image {
+            border: 4px solid black;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .now-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .now-image .badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: black;
+            color: white;
+            padding: 4px 12px;
+            font-size: 10px;
+            font-weight: 900;
+            border: 2px solid white;
+        }
+
+        /* Challenge Card */
+        .challenge-card {
+            border: 4px solid black;
+            padding: 24px;
+            background: white;
+            margin-bottom: 24px;
+        }
+
+        .challenge-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .challenge-number {
+            width: 32px;
+            height: 32px;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .challenge-title {
+            font-size: 18px;
+            font-weight: 900;
+            flex: 1;
+        }
+
+        .challenge-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            font-size: 13px;
+        }
+
+        .challenge-tag {
+            border: 2px solid black;
+            padding: 4px 12px;
+            display: inline-block;
+            font-weight: 900;
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        .challenge-tag.solution {
+            background: black;
+            color: white;
+        }
+
+        /* Stats Box */
+        .stats-box {
+            border: 4px solid black;
+            padding: 24px;
+            text-align: center;
+            background: white;
+        }
+
+        .stats-box.black {
+            background: black;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            margin-top: 8px;
+            font-weight: 900;
+        }
+
+        /* Screenshot Card */
+        .screenshot-card {
+            margin-bottom: 32px;
+        }
+
+        .screenshot-image-wrapper {
+            position: relative;
+            aspect-ratio: 4/3;
+            border: 4px solid black;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .screenshot-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        .tool-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: black;
+            color: white;
+            border: 2px solid white;
+            padding: 8px 16px;
+            transform: rotate(3deg);
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .number-badge {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 4px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        .screenshot-caption {
+            border-left: 4px solid black;
+            padding-left: 16px;
+            margin-top: 16px;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        /* Pipeline Image */
+        .pipeline-image {
+            width: 100%;
+            border: 4px solid black;
+            background: white;
+            padding: 24px;
+        }
+
+        .pipeline-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            border: 4px solid black;
+            padding: 32px;
+            background: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .quote-text {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .quote-description {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .large-quote {
+            border-top: 4px solid black;
+            border-bottom: 4px solid black;
+            padding: 48px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1.5;
+            margin-top: 96px;
+        }
+
+        .border-left-thick {
+            border-left: 4px solid black;
+            padding-left: 32px;
+        }
+
+        .border-right-thick {
+            border-right: 2px solid black;
+            padding-right: 32px;
+        }
+
+        .border-left-accent {
+            border-left: 4px solid black;
+            padding-left: 24px;
+        }
+
+        .text-small {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .text-bold {
+            font-weight: 900;
+        }
+
+        .mt-32 {
+            margin-top: 32px;
+        }
+
+        .mb-32 {
+            margin-bottom: 32px;
+        }
+
+        .space-y-16 > * + * {
+            margin-top: 16px;
+        }
+
+        .space-y-32 > * + * {
+            margin-top: 32px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 2px solid #d0d0d0;
+            padding: 48px 32px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-left,
+            .hero-center,
+            .hero-right {
+                width: 100%;
+                border: none;
+                padding: 16px;
+            }
+
+            .hero-title {
+                font-size: 5rem;
+            }
+
+            .big-title {
+                font-size: 3.5rem;
+            }
+
+            .huge-title {
+                font-size: 4rem;
+            }
+
+            .grid-2,
+            .grid-12 {
+                grid-template-columns: 1fr;
+            }
+
+            .col-4,
+            .col-5,
+            .col-7,
+            .col-8 {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="top-nav-left">
+            <span>🎮 ゲームアートプロデューサー ポートフォリオ</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="black">
+                <circle cx="6" cy="6" r="6"/>
+            </svg>
+        </div>
+        <div class="top-nav-right">
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <button>概要</button>
+        <button>ハイライト</button>
+        <button>制作過程</button>
+        <button>課題</button>
+        <button>パイプライン</button>
+        <button>振り返り</button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <!-- Left Column -->
+            <div class="hero-left">
+                <div class="text-box">
+                    <p class="text-bold">ゲーム制作は一度きり。でも、作り方は無限だ</p>
+                    <br>
+                    地域から始まる旅はわりとない。問いから始まることもある。ひらめき。幼いころの記憶。ふとした分岐点から始まることも。日替わりゼミナールは、日々の道を選んだ人の声を集めた番組です。たとえば、芸人を経て活動会社を立ち上げた人。アンデスのアルパカ飼育者の夢を守るために走った人。たどり着いた場所も見えなかった道を、日々たどり続けてより抜いてきた人たち。夢を見た、静かな葛藤、大きな挑戦、そのすべてをつなぐ「目に見えない道」を探訪していきます。
+                </div>
+
+                <div class="text-small mt-32 space-y-16">
+                    <p class="text-bold">一つのプロジェクト、無限の制作方法</p>
+                    <p>
+                        本作は、不気味な砂漠を舞台とするサバイバルアドベンチャーです。砂漠では、巨大な存在が静かに砂を動かし、世界の姿を変え続けています。プレイヤーは名もなき旅人。限られた命を抱え、無慈悲な世界をさまよいます。砂の下に眠る失われた文明の痕跡を辿りながら、人類が夢見る楽園「ウォーターパラダイス(Water Paradise)」を目指します。この世界では、すべての選択に意味があります。一瞬たりとも、無駄にはできません。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Center -->
+            <div class="hero-center">
+                <h1 class="hero-title">
+                    DESOL
+                </h1>
+                
+                <p style="font-size: 14px; letter-spacing: 0.3em; margin-top: 16px; text-align: center;">
+                    GAME ART PRODUCTION CASE STUDY
+                </p>
+
+                <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 48px;">
+                    <div style="width: 200px; height: 1px; background: black;"></div>
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="black">
+                        <circle cx="4" cy="4" r="4"/>
+                    </svg>
+                    <div style="width: 200px; height: 1px; background: black;"></div>
+                </div>
+
+                <h2 class="hero-subtitle">
+                    実存主義 ⅹ 無機 ｘ 自由意志
+                </h2>
+            </div>
+
+            <!-- Right Column -->
+            <div class="hero-right">
+                <div class="image-placeholder">
+                    <div class="circle-badge">
+                        WABI<br>SABI<br>侘寂
+                    </div>
+                </div>
+                <p style="font-size: 9px; margin-top: 8px; line-height: 1.7;">
+                    制作：2024-2025 | 役割：アートプロデューサー
+                </p>
+            </div>
+
+            <!-- Stamp Badge -->
+            <div class="stamp">
+                <div class="stamp-inner">
+                    <div>DESOL</div>
+                    <div style="margin-top: 4px; font-size: 8px;">侘寂美学</div>
+                    <div style="font-size: 8px;">制作記録</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Project Overview -->
+        <div class="section">
+            <div class="container">
+                <div class="grid-12">
+                    <div class="col-12">
+                        <h2 style="font-size: 4rem; font-weight: 900; line-height: 1.2; margin-bottom: 32px;">
+                            プロジェクト概要
+                        </h2>
+                        <div class="border-left-thick text-small">
+                            <p style="margin-bottom: 16px;">
+                                「DESOL」は廃墟化した世界を舞台にしたアクションゲームです。孤独、喪失、そして希望をテーマに、
+                                荒廃した環境の中で生き延びるキャラクターの物語を描きます。侘寂の美学を取り入れ、
+                                不完全さと儚さの中に美を見出すビジュアルスタイルを構築しました。
+                            </p>
+                            <p>
+                                本プロジェクトでは、アートプロデューサーとして、コンセプト段階から最終実装まで、
+                                チーム横断的な制作フローの設計と管理を担当しました。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Visual Transformation -->
+        <div class="section section-bg">
+            <div class="container">
+                <div class="grid-12">
+                    <!-- Left Title -->
+                    <div class="col-5 border-right-thick">
+                        <h2 class="big-title">
+                            ビジュ<br>
+                            アル<br>
+                            進化
+                        </h2>
+                        <div class="space-y-16 text-small mt-32">
+                            <p class="text-bold">視覚的変革 / Visual Evolution</p>
+                            <p class="border-left-thick" style="line-height: 1.8;">
+                                初期の環境デザインは平坦なライティングと深度の欠如に悩まされていました。
+                                再設計では、動的照明システム、ボリュメトリックフォグ、
+                                そして慎重に調整されたカラーグレーディングを導入し、
+                                雰囲気を確立し、プレイヤーの注意を誘導しました。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Comparison -->
+                    <div class="col-7">
+                        <div class="comparison-container" id="comparison1">
+                            <img src="https://images.unsplash.com/photo-1728198458688-ce498a4e4a61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMGdhbWUlMjBhc3NldHN8ZW58MXx8fHwxNzcxODYxNTc1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="After" class="comparison-image">
+                            <img src="https://images.unsplash.com/photo-1758862493208-2046897d09d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWRlbyUyMGdhbWUlMjBjaGFyYWN0ZXIlMjBkZXNpZ258ZW58MXx8fHwxNzcxNzY4MDc5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Before" class="comparison-image comparison-before" id="beforeImg1">
+                            <div class="comparison-slider" id="slider1">
+                                <div class="comparison-handle"></div>
+                            </div>
+                            <div class="comparison-label left">以前</div>
+                            <div class="comparison-label right">現在</div>
+                        </div>
+                        
+                        <!-- Now Images Grid -->
+                        <div class="now-images-grid">
+                            <div class="now-image">
+                                <img src="https://images.unsplash.com/photo-1765130729123-a8b93ae911d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1lJTIwbGV2ZWwlMjBkZXNpZ258ZW58MXx8fHwxNzcxODYxNTc1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Now 1">
+                                <div class="badge">環境詳細</div>
+                            </div>
+                            <div class="now-image">
+                                <img src="https://images.unsplash.com/photo-1728198458688-ce498a4e4a61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMGdhbWUlMjBhc3NldHN8ZW58MXx8fHwxNzcxODYxNTc1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Now 2">
+                                <div class="badge">キャラクター</div>
+                            </div>
+                            <div class="now-image">
+                                <img src="https://images.unsplash.com/photo-1758862493208-2046897d09d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aWRlbyUyMGdhbWUlMjBjaGFyYWN0ZXIlMjBkZXNpZ258ZW58MXx8fHwxNzcxNzY4MDc5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Now 3">
+                                <div class="badge">照明効果</div>
+                            </div>
+                            <div class="now-image">
+                                <img src="https://images.unsplash.com/photo-1765130729123-a8b93ae911d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1lJTIwbGV2ZWwlMjBkZXNpZ258ZW58MXx8fHwxNzcxODYxNTc1fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Now 4">
+                                <div class="badge">マテリアル</div>
+                            </div>
+                        </div>
+
+                        <div class="grid-2 mt-32">
+                            <div style="border: 2px solid black; padding: 16px; font-size: 13px;">
+                                <p class="text-bold" style="margin-bottom: 8px;">以前の状態</p>
+                                <ul style="list-style: disc; padding-left: 20px; line-height: 2;">
+                                    <li>平坦な照明システム</li>
+                                    <li>限られた色彩範囲</li>
+                                    <li>静的な雰囲気</li>
+                                </ul>
+                            </div>
+                            <div style="border: 2px solid black; padding: 16px; background: black; color: white; font-size: 13px;">
+                                <p class="text-bold" style="margin-bottom: 8px;">現在の状態</p>
+                                <ul style="list-style: disc; padding-left: 20px; line-height: 2;">
+                                    <li>動的PBRライティング</li>
+                                    <li>ボリュメトリック効果</li>
+                                    <li>大気の深度表現</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Production Challenges -->
+        <div class="section">
+            <div class="container">
+                <div style="display: flex; align-items: flex-start; gap: 48px;">
+                    <div style="width: 35%;">
+                        <h2 class="big-title" style="transform: rotate(-2deg);">
+                            制作<br>
+                            課題
+                        </h2>
+                        <div style="border: 4px solid black; padding: 24px; background: white; margin-top: 32px;">
+                            <p class="text-small" style="line-height: 1.8;">
+                                <span class="text-bold">制作課題と解決策</span><br><br>
+                                すべての制作には固有の障害が存在します。重要なのは問題を避けることではなく、
+                                課題をイノベーションとチーム成長の機会に変えるシステムを構築することです。
+                                以下は本プロジェクトで直面した主要な課題とその解決策です。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="flex: 1;">
+                        <!-- Challenge 1 -->
+                        <div class="challenge-card">
+                            <div class="challenge-header">
+                                <div class="challenge-number">1</div>
+                                <h3 class="challenge-title">マルチプラットフォーム向けアセット最適化</h3>
+                            </div>
+                            <div class="challenge-content">
+                                <div>
+                                    <span class="challenge-tag">課題</span>
+                                    <p style="line-height: 1.8;">元のアセットはモバイルデバイスには重すぎ、iOSとAndroidプラットフォーム全体でパフォーマンスの問題と長いロード時間を引き起こしていました。</p>
+                                </div>
+                                <div>
+                                    <span class="challenge-tag solution">解決策</span>
+                                    <p style="line-height: 1.8;" class="text-bold">テクスチャ圧縮、LOD生成、プラットフォーム固有のビルドを備えた自動アセットパイプラインを実装。視覚品質を維持しながらアセットサイズを60%削減しました。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Challenge 2 -->
+                        <div class="challenge-card">
+                            <div class="challenge-header">
+                                <div class="challenge-number">2</div>
+                                <h3 class="challenge-title">部署間コミュニケーションの断絶</h3>
+                            </div>
+                            <div class="challenge-content">
+                                <div>
+                                    <span class="challenge-tag">課題</span>
+                                    <p style="line-height: 1.8;">デザイナーとエンジニアが異なるツールとバージョン管理システムを使用しており、頻繁なミスコミュニケーションとアセット反復の遅延が発生していました。</p>
+                                </div>
+                                <div>
+                                    <span class="challenge-tag solution">解決策</span>
+                                    <p style="line-height: 1.8;" class="text-bold">タスク管理にNotionを、リアルタイムフィードバックにDiscordチャンネルを使用した統一ワークフローを確立。標準化された命名規則とアセット納品プロトコルを作成しました。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Challenge 3 -->
+                        <div class="challenge-card">
+                            <div class="challenge-header">
+                                <div class="challenge-number">3</div>
+                                <h3 class="challenge-title">大規模な品質管理</h3>
+                            </div>
+                            <div class="challenge-content">
+                                <div>
+                                    <span class="challenge-tag">課題</span>
+                                    <p style="line-height: 1.8;">スプリントごとに200以上のアセットがあり、手動QAは持続不可能になり、本番前に重大な問題が見逃されていました。</p>
+                                </div>
+                                <div>
+                                    <span class="challenge-tag solution">解決策</span>
+                                    <p style="line-height: 1.8;" class="text-bold">アセット仕様をチェックする自動検証スクリプトを開発し、反復追跡用のビジュアル差分ツールを実装し、体系的なレビューチェックリストを作成しました。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid-3 mt-32">
+                            <div class="stats-box">
+                                <div class="stat-number">60%</div>
+                                <div class="stat-label">サイズ削減</div>
+                            </div>
+                            <div class="stats-box black">
+                                <div class="stat-number">40%</div>
+                                <div class="stat-label">高速化</div>
+                            </div>
+                            <div class="stats-box">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">アセット数</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Daily Workflow -->
+        <div class="section section-bg">
+            <div class="container">
+                <h2 class="huge-title">
+                    日常的な<br>ワークフロー
+                </h2>
+                
+                <div class="grid-2">
+                    <!-- Screenshot 1 -->
+                    <div class="screenshot-card">
+                        <div class="screenshot-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1611606063065-ee7946f0787a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXNjb3JkJTIwY2hhdCUyMGludGVyZmFjZXxlbnwxfHx8fDE3NzE4NTkxNzF8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Discord" class="screenshot-image">
+                            <div class="tool-badge">Discord</div>
+                            <div class="number-badge">1</div>
+                        </div>
+                        <div class="screenshot-caption">チームとの日々のアートフィードバックセッション</div>
+                    </div>
+
+                    <!-- Screenshot 2 -->
+                    <div class="screenshot-card">
+                        <div class="screenshot-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1770368787779-8472da646193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3Rpb24lMjB3b3Jrc3BhY2UlMjBkYXNoYm9hcmR8ZW58MXx8fHwxNzcxODU5MTcxfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Notion" class="screenshot-image">
+                            <div class="tool-badge">Notion</div>
+                            <div class="number-badge">2</div>
+                        </div>
+                        <div class="screenshot-caption">Notionでのスプリント計画とアセット追跡</div>
+                    </div>
+
+                    <!-- Screenshot 3 -->
+                    <div class="screenshot-card">
+                        <div class="screenshot-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1752443560089-d9e99bc74049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1lJTIwYXJ0JTIwY29uY2VwdCUyMGRlc2lnbnxlbnwxfHx8fDE3NzE4NTkxNzJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Photoshop" class="screenshot-image">
+                            <div class="tool-badge">Photoshop</div>
+                            <div class="number-badge">3</div>
+                        </div>
+                        <div class="screenshot-caption">コンセプトアートの開発と反復</div>
+                    </div>
+
+                    <!-- Screenshot 4 -->
+                    <div class="screenshot-card">
+                        <div class="screenshot-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1758598738339-6b1602317e52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1lJTIwZGV2ZWxvcG1lbnQlMjBzY3JlZW58ZW58MXx8fHwxNzcxODU5MTcwfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Unity" class="screenshot-image">
+                            <div class="tool-badge">Unity</div>
+                            <div class="number-badge">4</div>
+                        </div>
+                        <div class="screenshot-caption">エンジン統合とリアルタイムテスト</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Production Pipeline -->
+        <div class="section">
+            <div class="container">
+                <div class="grid-12">
+                    <div class="col-4">
+                        <h2 class="big-title">
+                            制作<br>
+                            パイプ<br>
+                            ライン
+                        </h2>
+                        
+                        <div class="border-left-accent text-small mt-32 space-y-16">
+                            <p class="text-bold">パイプライン設計 / Production Pipeline</p>
+                            <p style="line-height: 1.8;">
+                                適切に設計されたパイプラインは、機能しているときは目に見えず、
+                                機能していないときは明白です。このフレームワークは反復を通じて進化し、
+                                チームのフィードバックと制作の現実によって形作られました。
+                            </p>
+                        </div>
+
+                        <div style="border: 4px solid black; padding: 24px; background: white; margin-top: 32px;">
+                            <p class="text-small text-bold mb-32" style="margin-bottom: 12px;">主要原則</p>
+                            <ul class="text-small" style="list-style: disc; padding-left: 20px; line-height: 2;">
+                                <li>可能な限り自動化</li>
+                                <li>創造性のための人的レビュー</li>
+                                <li>明確な引き継ぎポイント</li>
+                                <li>各段階でのドキュメント化</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-8" style="border-left: 2px solid black; padding-left: 32px;">
+                        <h3 style="font-size: 24px; font-weight: 900; margin-bottom: 24px;">制作フロー全体像</h3>
+                        <div class="pipeline-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23f5f5f5'/%3E%3Ctext x='400' y='200' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3E実際のワークフロー図をここに配置%3C/text%3E%3C/svg%3E" alt="Production Pipeline">
+                        </div>
+                        <p style="font-size: 12px; margin-top: 16px; color: #666;">
+                            ※ 実際の制作環境では、提供されたワークフロー図（Planning→Production→Integration）を上記エリアに配置してください。
+                        </p>
+
+                        <div class="mt-32 text-small border-left-thick">
+                            <p class="text-bold" style="margin-bottom: 12px;">フローの特徴</p>
+                            <ul style="list-style: disc; padding-left: 20px; line-height: 2;">
+                                <li><strong>Planning段階：</strong>キャラクタースケッチ、コンセプト確定、カメラ配置設計</li>
+                                <li><strong>Production段階：</strong>モデリング、リファインメント、UV展開、テクスチャリング、リギング、アニメーション制作</li>
+                                <li><strong>Integration段階：</strong>カメラ配置レビュー、最終ダメージテスト、ゲーム感触調整、アニメーション実装、ビルド＆デバッグ</li>
+                                <li><strong>部署間連携：</strong>アート、デザイン、エンジニアの各チームが明確な引き継ぎポイントで協力</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Reflection -->
+        <div class="section section-bg" style="padding-top: 96px; padding-bottom: 96px;">
+            <div class="container" style="max-width: 1200px;">
+                <div class="grid-2" style="gap: 64px;">
+                    <div>
+                        <h2 class="big-title" style="margin-bottom: 32px;">
+                            振り<br>
+                            返り
+                        </h2>
+                        <div class="text-small border-left-thick space-y-16" style="line-height: 1.8;">
+                            <p>
+                                このプロジェクトは、創造的な作業における体系的なプロセス設計の重要性を再認識させました。
+                                最も影響力のある改善は、個々の芸術的決定からではなく、
+                                明確なコミュニケーションチャネルと反復可能なワークフローを確立することから生まれました。
+                            </p>
+                            <p class="text-bold">
+                                侘寂の哲学―不完全さと無常の中に美を見出すこと―は、
+                                ゲーム開発の反復的な性質と並行しています。
+                            </p>
+                            <p>
+                                各バージョンには制作プロセスの痕跡が含まれており、
+                                制約と戦うのではなく受け入れることに価値があります。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="quote-box">
+                            <p class="quote-text">
+                                「道を逸れても、<br>
+                                それが道になる」
+                            </p>
+                            <p class="quote-description" style="line-height: 1.8;">
+                                今後は、これらのプロセスをさまざまな技術スキルレベルのチームにとって
+                                さらにアクセスしやすくすることに焦点を当てています。
+                                優れた制作慣行が創造性の障壁にならないようにすることが重要です。
+                                すべての回り道は、前方の道について何か新しいことを教えてくれます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Large Quote -->
+                <div class="large-quote">
+                    「すべての制約は、<br>
+                    異なる方法で革新するための招待状である」
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <span>© 2026 ポートフォリオ</span>
+            <span>ゲームアートプロダクション | DESOL プロジェクト</span>
+        </div>
+    </footer>
+
+    <script>
+        // Before/After Comparison Slider
+        function initComparison(containerId, beforeImgId, sliderId) {
+            const container = document.getElementById(containerId);
+            const beforeImg = document.getElementById(beforeImgId);
+            const slider = document.getElementById(sliderId);
+            let isDragging = false;
+
+            function updatePosition(e) {
+                if (!isDragging) return;
+                const rect = container.getBoundingClientRect();
+                const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+                const percent = (x / rect.width) * 100;
+                
+                beforeImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+                slider.style.left = `${percent}%`;
+            }
+
+            container.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+
+            container.addEventListener('mousemove', updatePosition);
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+
+            // Touch support for mobile
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+            });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const touch = e.touches[0];
+                const rect = container.getBoundingClientRect();
+                const x = Math.max(0, Math.min(touch.clientX - rect.left, rect.width));
+                const percent = (x / rect.width) * 100;
+                
+                beforeImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+                slider.style.left = `${percent}%`;
+            });
+
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+        }
+
+        // Initialize comparison slider
+        initComparison('comparison1', 'beforeImg1', 'slider1');
+    </script>
+</body>
+</html>
